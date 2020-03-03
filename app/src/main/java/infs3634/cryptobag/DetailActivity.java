@@ -40,6 +40,7 @@ public class DetailActivity extends AppCompatActivity {
         mValue = findViewById(R.id.tvValueNameField);
         mChange1h = findViewById(R.id.tvChange1hNameField);
         mChange24h = findViewById(R.id.tvChange1DayNameField);
+        mChange7d = findViewById(R.id.tvChange1WeekNameField);
         mMarketcap = findViewById(R.id.tvMarketcapNameField);
         mVolume = findViewById(R.id.tvVolumeNameField);
         mSearch = findViewById(R.id.ivSearch);
@@ -48,6 +49,7 @@ public class DetailActivity extends AppCompatActivity {
         String coinSymbol = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
         Log.i(TAG, "Coin-Symbol = " + coinSymbol);
         NumberFormat formatter = NumberFormat.getCurrencyInstance();
+
         ArrayList<Coin> coins = Coin.getCoins();
 
         final Coin coin = Coin.searchCoin(coinSymbol);

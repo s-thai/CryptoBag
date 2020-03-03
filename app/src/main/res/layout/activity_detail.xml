@@ -82,7 +82,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvChange1hName" />
 
     <TextView
-        android:id="@+id/tcChange1WeekName"
+        android:id="@+id/tvChange1WeekName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -101,7 +101,7 @@
         android:layout_marginTop="24dp"
         android:text="Marketcap"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tcChange1WeekName" />
+        app:layout_constraintTop_toBottomOf="@+id/tvChange1WeekName" />
 
     <TextView
         android:id="@+id/tvVolumeName"
@@ -136,12 +136,12 @@
         app:layout_constraintTop_toTopOf="@+id/tvChange1DayName" />
 
     <TextView
-        android:id="@+id/tcChange1WeekNameField"
+        android:id="@+id/tvChange1WeekNameField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
         app:layout_constraintStart_toStartOf="@+id/tvName"
-        app:layout_constraintTop_toTopOf="@+id/tcChange1WeekName" />
+        app:layout_constraintTop_toTopOf="@+id/tvChange1WeekName" />
 
     <TextView
         android:id="@+id/tvMarketcapNameField"

@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         nButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                launchDetailActivity("Hello from Detail Activity");
+                launchDetailActivity("BTC");
             }
         });
 
