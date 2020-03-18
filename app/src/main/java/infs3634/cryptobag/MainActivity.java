@@ -1,6 +1,8 @@
 package infs3634.cryptobag;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private RecyclerView.LayoutManager mLayoutManager;
     private RecyclerView.Adapter mAdapter;
+    private boolean mTwoPane;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,11 +33,23 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
+        mTwoPane = findViewById(R.id.detailContainer) != null;
 
         CoinAdapter.RecyclerViewClickListener listener = new CoinAdapter.RecyclerViewClickListener() {
             @Override
             public void onClick(View view, int position) {
-                launchDetailActivity(position);
+                if (mTwoPane == true){
+                    final FragmentManager fragmentManager = getSupportFragmentManager();
+                    FragmentTransaction transaction = fragmentManager.beginTransaction();
+                    Bundle arguments = new Bundle();
+                    arguments.putInt("position", position);
+                    DetailFragment fragment = new DetailFragment();
+                    fragment.setArguments(arguments);
+                    transaction.replace(R.id.detailContainer, fragment);
+                    transaction.commit();
+                }else {
+                    launchDetailActivity(position);
+                }
             }
         };
 
@@ -47,36 +62,6 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, DetailActivity.class);
         intent.putExtra(EXTRA_MESSAGE, position);
         startActivity(intent);
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Log.i(TAG, "onStart Called");
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.i(TAG, "onResume Called");
-    }
-
-    @Override
-    protected void onStop(){
-        super.onStop();
-        Log.i(TAG, "onStop Called");
-    }
-
-    @Override
-    protected void onPause(){
-        super.onPause();
-        Log.i(TAG, "onPause Called");
-    }
-
-    @Override
-    protected void onDestroy(){
-        super.onDestroy();
-        Log.i(TAG, "onDestroy Called");
     }
 
 }
